@@ -1,0 +1,20 @@
+<h1>This is the landing page of our event</h1>
+<br>
+{% if request.user.is_authenticated %}
+<h1>User Authenticated</h1>
+<br><br>
+
+<img src="{{ auth0User.extra_data.picture }}" />
+<p>{{ user.first_name }}</p>
+<p>{{ auth0User.extra_data.email }}</p>
+<br><br>
+<button>
+  <a href="/logout"> Logout </a>
+</button>
+
+{% else %} 
+
+<h1>User Unauthenticted</h1>
+<br><br>
+<button><a href="/login/auth0">Login Here</a></button>
+{% endif %}
