@@ -37,7 +37,30 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
+    'UserAuth'
 ]
+# AUTH0 BACKEND CODE
+
+SOCIAL_AUTH_TRAILING_SLASH = False
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-e4goo-qh.us.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = '1hLRFSjPAuw6bWtQUIcZWF7uHeXBef1x'
+SOCIAL_AUTH_AUTH0_SECRET = 'rqEF_SJ3uXp75eb4eEUWATtl9KdRwTB3SoNQQ-MJkAAkhL9VwNMzqaezb-YSJsnS'
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile',
+    'email'
+]
+AUTHENTICATION_BACKENDS = {
+    'UserAuth.auth0backend.Auth0',
+    'django.contrib.auth.backends.ModelBackend'
+}
+
+LOGIN_URL = '/login/auth0'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+# AUTH0 BACKEND CODE
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,7 +77,7 @@ ROOT_URLCONF = 'SquidGame.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
