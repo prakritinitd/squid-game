@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User, AbstractUser
+from django.utils import timezone
 import random
 
 class Event (models.Model):
@@ -13,6 +14,7 @@ class Event (models.Model):
 class CustomUser (models.Model):
     user = models.OneToOneField(User,verbose_name=("User"), on_delete=models.CASCADE,null=True)
     score = models.SmallIntegerField(default=0)
+    gameover =  models.BooleanField(default=False,verbose_name=("Game Over"),null=True)
     qualifiedround1 = models.BooleanField(default=False,verbose_name=("Qualified Round 1 ?"),null=True)
     qualifiedround2 = models.BooleanField(default=False,verbose_name=("Qualified Round 2 ?"),null=True)
 
@@ -23,17 +25,19 @@ class CustomUser (models.Model):
 class Round1 (models.Model):
     user = models.OneToOneField(User,verbose_name=("User"), on_delete=models.CASCADE)
     customuser = models.OneToOneField(CustomUser,verbose_name=("Custom User"), on_delete=models.CASCADE,editable=False,null=True)
-    event = models.OneToOneField(Event, on_delete=models.CASCADE)
-    started = models.DateTimeField(verbose_name="Started Time")
-    ended = models.DateTimeField("Ended Time")
-    cheater = models.BooleanField(default=False,null=True)
-    passed = models.BooleanField(default=False,null=True)
+
+    started = models.DateTimeField(verbose_name="Started Time",null=True,default=timezone.now)
+    ended = models.DateTimeField("Ended Time",null=True,blank= True)
+
+    attempt= models.SmallIntegerField(verbose_name="Attempt Number",default=1,null=True)
+    cheater = models.BooleanField("Is A Cheater",default=False,null=True)
+    gameover = models.BooleanField("Game Over ",default=False,null=True)
+    passed = models.BooleanField(verbose_name="Has Passed This Round",default=False,null=True)
+
+    def __str__(self):
+        return self.user.first_name
 
 class Round2 (models.Model):
-
-    def randomize():
-        shapes = ['heart','crescent','star','umbrella']
-        return shapes[random.randint(0, 3)]
 
     user = models.OneToOneField(User,verbose_name=("User"), on_delete=models.CASCADE)
     customuser = models.OneToOneField(CustomUser,verbose_name=("Custom User"), on_delete=models.CASCADE,editable=False,null=True)
@@ -43,5 +47,5 @@ class Round2 (models.Model):
     cheater = models.BooleanField(default=False,null=True)
     passed = models.BooleanField(default=False,null=True)
 
-    shape = models.CharField(verbose_name="Shape Assigned",max_length=10,default=randomize())
+    shape = models.CharField(verbose_name="Shape Assigned",max_length=10,null=True)
     image = models.ImageField(upload_to="uploads/")
