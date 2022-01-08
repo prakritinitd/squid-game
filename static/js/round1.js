@@ -12,6 +12,7 @@ let prev_pos = {
 };
 let distanceSinceWatching = 0;
 const supaModal = document.getElementById('big-modal');
+const THEURL = window.location.origin
 const CSRF = document.getElementById('csrf').innerText;
 const continueBtn = document.getElementById('continue');
 const message =  document.getElementById('message');
@@ -34,7 +35,7 @@ shotGun.volume = 0.2;
 const sigh = new Audio('https://assets.codepen.io/127738/sigh.mp3');
 
 
-const MAX_TIME = 5;
+const MAX_TIME = 60;
 const FINISH_DISTANCE = 100;
 const IN_GAME_MAX_DISTANCE = 4000;
 const MAX_MOVEMENT = 180;
@@ -66,7 +67,7 @@ function AttemptsLeft() {
     console.log("Attempts Left CAllled")
     axios({
         method:'GET',
-        url: 'http://localhost:8000/round1-attempts-left',
+        url: `${THEURL}/round1-attempts-left`,
     }).then(res =>{
         console.log(res.data)
         attemptsLeft.innerText= res.data.message
@@ -79,7 +80,7 @@ function act() {
   console.log("Act CAlled")
   axios({
     method: 'GET',
-    url: 'http://localhost:8000/round1-help'
+    url: `${THEURL}/round1-help`,
   }).then(res =>{
       if (res.data.status === true){
         message.innerText= res.data.HelpText;
@@ -100,7 +101,7 @@ function bact() {
   axios({
     method: 'POST',
     headers: {'X-CSRFToken': CSRF},
-    url: 'http://localhost:8000/round1_-_-_-_'
+    url: `${THEURL}/round1_-_-_-_`
   }).then(res =>{
     console.log(res.data);
       message.innerText= res.data.message;
