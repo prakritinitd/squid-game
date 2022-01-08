@@ -15,14 +15,16 @@ def home(request):
         return HttpResponse("<h1>No Event Happening Right Now</h1>")
     else:
         now = timezone.now()
+        start = event.start
+        end = event.end
         status = None
-        if event.start > now:
+        if start > now:
             # Coming Soon
             status = -1
-        if event.start < now and event.end > now:
+        if start < now and end > now:
             # Event ongoing
             status = 0
-        if now > event.end:
+        if now > end:
             # Event Ended
             status = 1
         
