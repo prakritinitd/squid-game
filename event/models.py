@@ -41,11 +41,17 @@ class Round2 (models.Model):
 
     user = models.OneToOneField(User,verbose_name=("User"), on_delete=models.CASCADE)
     customuser = models.OneToOneField(CustomUser,verbose_name=("Custom User"), on_delete=models.CASCADE,editable=False,null=True)
-    event = models.OneToOneField(Event, on_delete=models.CASCADE)
-    started = models.DateTimeField(verbose_name="Started Time")
-    ended = models.DateTimeField("Ended Time")
-    cheater = models.BooleanField(default=False,null=True)
-    passed = models.BooleanField(default=False,null=True)
 
-    shape = models.CharField(verbose_name="Shape Assigned",max_length=10,null=True)
-    image = models.ImageField(upload_to="uploads/")
+    started = models.DateTimeField(verbose_name="Started Time",null=True,default=timezone.now)
+    ended = models.DateTimeField("Ended Time",null=True,blank= True)
+
+    cheater = models.BooleanField(default=False,null=True)
+    uploaded = models.BooleanField(default=False,null=True)
+    passed = models.BooleanField(default=False,null=True)
+    gameover = models.BooleanField("Game Over ",default=False,null=True)
+
+    shape = models.CharField(verbose_name="Shape Assigned",max_length=50,null=True)
+    image = models.ImageField(verbose_name="Uploaded Image",upload_to="uploads/",null=True,blank=True)
+
+    def __str__(self):
+        return self.user.first_name

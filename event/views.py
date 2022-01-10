@@ -1,11 +1,16 @@
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Event, CustomUser, Round1, Round2
 from django.utils import timezone
+from django.core.files.storage import FileSystemStorage
+# Time and Random
+from django.utils.timezone import now
+from random import randint
+from datetime import timedelta
+import datetime
 # Models and Decorators
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.utils.timezone import now
 
 def home(request):
     auth0user = {}
@@ -41,17 +46,55 @@ def game(request):
     if customuser[0].gameover == True:
         return render(request,"Gameover.html")
 
+    # Round 1 Logic
     if  customuser[0].qualifiedround1 == False and customuser[0].qualifiedround2 == False:
         round1 = Round1.objects.filter(user=user).first()
         if round1 == None:
             round1 = Round1(user=user,customuser=customuser[0])
             round1.save()
         return render(request, "round1.html",{'auth0User':auth0user})
+
+    # Round 2 Logic
     elif customuser[0].qualifiedround1 == True and customuser[0].qualifiedround2 == False:
+        Shapes = ['heart.png','star.jpg','umbrella.jpg','crescent.png']
+        round2 = Round2.objects.filter(user=user).first()
 
-        # Round 2 event logic goes here
+        if round2 is not None and round2.uploaded == True:
+            return render(request, 'waitAfterRound2.html')
 
-        return render(request, "round2.html")
+
+        # Here if the user bypasses the frontend and does does not upload anything
+        # Then nothing will happed
+        if request.method == 'POST' and request.FILES['image'] :
+            upload = request.FILES['image']
+            fss = FileSystemStorage()
+            file = fss.save(upload.name, upload)
+
+            round2.image = upload
+            round2.uploaded = True
+            round2.save()
+            return redirect('game')
+
+        if round2 is not None and (now() > round2.ended) and round2.uploaded == False:
+            customuser[0].gameover = True
+            customuser[0].save()
+            round2.gameover = True
+            round2.save()
+
+            return render(request, 'GameOver.html')
+
+        if round2 == None:
+            round2 = Round2(user=user,customuser=customuser[0],shape=Shapes[randint(0, 3)])
+            round2.save()
+            round2.ended = round2.started + timedelta(minutes= 1,seconds= 15)
+            round2.save()
+
+        context = {
+            "endTime" : round2.ended.isoformat(),
+            "imagePath" : round2.shape
+        }
+
+        return render(request, "round2.html",context=context)
     else:
 
         # Send message via HTML to user to be ready for non website rounds
