@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Squid Game | User Profile</title>
+        <link rel="stylesheet" href="{% static 'css/userProfile.css' %}">
+
+    </head>
+
+    <body>
+        <div class="box3 logout">
+            <div class="3-section">
+                <a href="/logout/">
+                    <h4 class="follow">
+                        Logout
+                    </h4>
+                </a>
+            </div>
+        </div>
+        <div class="box3 logout-1">
+            <div class="3-section">
+                <a href="/">
+                    <h4 class="follow">
+                        Home
+                    </h4>
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="box1">
+
+                <div class="card-container">
+                    <div class="card">
+                        <div class="content">
+                            <div class="front">
+                                <img src="https://cdn.pixabay.com/photo/2021/10/18/18/03/squid-game-6721749_1280.jpg"
+                                    width="400" height="250" />
+                            </div>
+                            <div class="back">
+                                {{user.id}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box2">
+                <div class="1-section">
+                    <h3>
+                        <img src="{{ auth0User.extra_data.picture }}" class="profile-image" width="80px"
+                            height="75px" />
+
+                    </h3>
+                </div>
+                <div class="2-section">
+                    <h3>{{user.first_name}}</h3>
+                    <small>Name</small>
+
+                </div>
+                <div class="3-section">
+                    <h3>{{user.id}}</h3>
+                    <small>Player Number</small>
+                </div>
+            </div>
+            <div class="box3">
+                <div class="3-section">
+                    <a href="/squid-game" target="_blanc">
+                        <h4 class="follow">
+                            Play Now
+                        </h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+
+</html>

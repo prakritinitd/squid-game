@@ -1,1 +1,38 @@
-<h1>Game Over Player 123</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Squid Game</title>
+
+        <link rel="stylesheet" href="{% static 'css/gameover.css' %}">
+
+    </head>
+
+    <body>
+        <button class="play" onclick="window.location.href='/'">Go back!</button>
+
+        <div class="App">
+            <h1 class="lost">GAME OVER</h1>
+            <div class="container">
+                <h2 class="note">You lose</h2>
+                <section>
+                    <div class='blooddrop'></div>
+                    <div class='blooddrop'></div>
+                    <div class='blooddrop'></div>
+                    <div class='blooddrop'></div>
+                    <div class='blooddrop'></div>
+                    <div class='blooddrop'></div>
+                    <div class='blooddrop'></div>
+                    <div class='blooddrop'></div>
+                    <div class='blooddrop'></div>
+                    <div class='blooddrop'></div>
+                </section>
+            </div>
+        </div>
+    </body>
+
+</html>

@@ -25,7 +25,7 @@
       {% if request.user.is_authenticated %}
       <div style="text-align:center">
         <img src="{{ auth0User.extra_data.picture }}" class="profile-image" width="40px" height="40px" />
-        <a href="/logout/">
+        <a href="/profile">
 
           <p>{{user.first_name}}</p>
         </a>
@@ -112,7 +112,13 @@
 
           <lottie-player class="squid-logo" src="https://assets3.lottiefiles.com/packages/lf20_4qa8ttvd.json"
             background="transparent" speed="1" autoplay></lottie-player>
+          {% if request.user.is_authenticated %}
           <button class="play" onclick="window.location.href='/squid-game'">PLAY NOW!</button>
+          {% else %}
+          <button class="play" onclick="window.location.href='/login/auth0'">PLAY NOW!</button>
+
+          {% endif %}
+
 
           <div class="text-heading">
             <h3>

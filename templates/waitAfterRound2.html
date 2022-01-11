@@ -1,2 +1,38 @@
-<h1>Sit tight the Managers are checking the shape that you have uploaded</h1>
-<p>If you dont qualify you will be moved to game over page</p>
+{% load static %}
+<html>
+
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/userProfile.css' %}">
+        <link rel="stylesheet" href="{% static 'css/round2wait.css' %}">
+    </head>
+
+    <body>
+        <div class="box3 logout">
+            <div class="3-section">
+                <a href="/">
+                    <h4 class="follow">
+                        Home
+                    </h4>
+                </a>
+            </div>
+        </div>
+        <div class="text">
+            <p>We're reviewing <span class="green">your</span> candy <br> if it breaks. <span class="red">You</span>,
+                <br> will
+                die.
+
+                <span class="red">That's right</span>,
+                <span class="green">YOU DIE</span>
+            </p>
+        </div>
+
+        <div class="container">
+            <div class="circle">
+                <div class="mark"></div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
