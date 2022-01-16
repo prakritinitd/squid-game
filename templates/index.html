@@ -1,10 +1,12 @@
 {% extends "base.html" %} 
 {% load static %}
 {% block content %}
+<!-- MODAL PROFILE CARD
+============================== -->
 <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
-
-<div class="profileModalContainer" id="Profile" onclick="hideProfile()">
-  <div class="card-container" onclick="showProfile()">
+<div class="profileModalContainer" id="Profile">
+  <i id="cross" onclick="hideProfile()">&times;</i>
+  <div class="card-container">
     <div class="card">
       <div class="content">
         <div class="front" style="border-radius: 16px; overflow: hidden">
@@ -13,14 +15,42 @@
         <div class="back">
           <img src="{{ auth0User.extra_data.picture }}" />
             Player {{ user.id }}
-          <p>See you in 12 minutes</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<!-- MODAL HELP CARD
+============================== -->
+<link rel="stylesheet" href="{% static 'css/help.css' %}" />
+<div id="helpcard">
+  <i class="contat fas fa-times" onclick="hideContact()"></i>
+  <h6>Contact Us</h6>
+  <div class="container">
+    <div class="card thelegend"  onclick="window.location.href='https://wa.me/917478488502?text=Hello+Bihan+Bhaiya%2C+i+have+a+problem+...'">
+      <img src="https://wallpaperaccess.com/full/7124730.jpg" alt="Bihan Saha">
+      <p>Bihan Saha <i class="fab fa-whatsapp"></i></p>
+    </div>
+    <div class="card"  onclick="window.location.href='https://wa.me/917439876937?text=Hello+Rishav+Bhaiya%2C+i+have+a+problem+...'">
+      <img src="https://images.immediate.co.uk/production/volatile/sites/3/2021/10/E_mJs7EXsAAvMcA-134e338.jpg?quality=90&resize=620,413" alt="Bihan Saha">
+      <p>Rishav Jha <i class="fab fa-whatsapp"></i></p>
+    </div>
+    <div class="card theman"    onclick="window.location.href='https://wa.me/917478488502?text=Hello+Bihan+Bhaiya%2C+i+have+a+problem+...'">
+      <img src="https://wallpaperaccess.com/full/7124730.jpg" alt="Bihan Saha">
+      <p>Bihan Saha <i class="fab fa-whatsapp"></i></p>
+    </div>
+    <div class="card"  onclick="window.location.href='https://wa.me/917073998377?text=Hello+Rishita+Didi%2C+i+have+a+problem+...'">
+      <img src="https://www.looper.com/img/gallery/the-uniform-theory-that-will-change-how-you-watch-squid-game/l-intro-1633370365.jpg" alt="Rishita Shaw">
+      <p>Rishita Shaw <i class="fab fa-whatsapp" ></i></p>
+    </div>
+  </div>
+</div>
+
 <div id="landingpage">
+  {% if status == -1 %}
+    <div style="display:none;" id="tyme">{{eventStart}}</div>
+  {% endif %}
   <!-- OVERLAY
     =============================== -->
   <div class="overlay first"></div>
@@ -32,7 +62,9 @@
 
     <nav class="navbar">
       <div class="menu">S</div>
-      <h2 id="demo"></h2>
+      {% if status == -1 %}
+        <h2 id="demo"></h2>
+      {% endif %}
       <button class="about" style="display: flex;">
         <span class="home-button active">About</span>
         <span class="about-button">Close</span>
@@ -60,47 +92,15 @@
     <div class="media code">
       <ul>
         <li>
-          <a href="#" aria-label="Github" target="_blank" rel=" noopener">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="feather feather-github"
-            >
-              <title>GitHub</title>
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-              ></path>
+          <a href="https://www.youtube.com/channel/UCCJawK3GC87uhzxPdBGw_mA" aria-label="Youtube" target="_blank" rel=" noopener">
+            <svg fill="#fff" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px">
+              <path d="M 24.402344 9 C 17.800781 9 11.601563 9.5 8.300781 10.199219 C 6.101563 10.699219 4.199219 12.199219 3.800781 14.5 C 3.402344 16.898438 3 20.5 3 25 C 3 29.5 3.398438 33 3.898438 35.5 C 4.300781 37.699219 6.199219 39.300781 8.398438 39.800781 C 11.902344 40.5 17.898438 41 24.5 41 C 31.101563 41 37.097656 40.5 40.597656 39.800781 C 42.800781 39.300781 44.699219 37.800781 45.097656 35.5 C 45.5 33 46 29.402344 46.097656 24.902344 C 46.097656 20.402344 45.597656 16.800781 45.097656 14.300781 C 44.699219 12.101563 42.800781 10.5 40.597656 10 C 37.097656 9.5 31 9 24.402344 9 Z M 24.402344 11 C 31.601563 11 37.398438 11.597656 40.199219 12.097656 C 41.699219 12.5 42.898438 13.5 43.097656 14.800781 C 43.699219 18 44.097656 21.402344 44.097656 24.902344 C 44 29.199219 43.5 32.699219 43.097656 35.199219 C 42.800781 37.097656 40.800781 37.699219 40.199219 37.902344 C 36.597656 38.601563 30.597656 39.097656 24.597656 39.097656 C 18.597656 39.097656 12.5 38.699219 9 37.902344 C 7.5 37.5 6.300781 36.5 6.101563 35.199219 C 5.300781 32.398438 5 28.699219 5 25 C 5 20.398438 5.402344 17 5.800781 14.902344 C 6.101563 13 8.199219 12.398438 8.699219 12.199219 C 12 11.5 18.101563 11 24.402344 11 Z M 19 17 L 19 33 L 33 25 Z M 21 20.402344 L 29 25 L 21 29.597656 Z"/>
             </svg>
           </a>
         </li>
         <li>
-          <a href="#" aria-label="CodePen" target="_blank" rel="noopener">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="feather feather-codepen"
-            >
-              <title>CodePen</title>
-              <polygon
-                points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"
-              ></polygon>
-              <line x1="12" y1="22" x2="12" y2="15.5"></line>
-              <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
-              <polyline points="2 15.5 12 8.5 22 15.5"></polyline>
-              <line x1="12" y1="2" x2="12" y2="8.5"></line>
-            </svg>
+          <a onclick="showContact()" class="feather cpp" aria-label="CodePen" target="_blank" rel="noopener" height="50px" width="50px">  
+            HELP            
           </a>
         </li>
       </ul>
@@ -112,7 +112,7 @@
     <div class="media">
       <ul>
         <li>
-          <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <a href="https://www.facebook.com/prakriti.nitdgp/" aria-label="Instagram" target="_blank" rel="noopener">
             <svg
               fill="#000000"
               xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +129,7 @@
           </a>
         </li>
         <li>
-          <a href="#" aria-label="Facebook" target="_blank" rel="noopener">
+          <a href="https://www.instagram.com/prakriti.nitdgp/?hl=en" aria-label="Facebook" target="_blank" rel="noopener">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               role="img"
@@ -151,7 +151,7 @@
       </ul>
       <div class="footer">
         <span>Built by</span>
-        <a href="https://prakriti.com">Prakriti NIT Durgapur</a>
+        <a href="https://www.prakriti.in.net/">Prakriti NIT Durgapur</a>
       </div>
     </div>
     <main class="main-content">
@@ -167,23 +167,23 @@
             speed="1"
             autoplay
           ></lottie-player>
-          {% if request.user.is_authenticated %}
-          <button class="play" onclick="window.location.href='/squid-game'">
-            PLAY NOW!
-          </button>
-          {% else %}
-          <button class="play" onclick="window.location.href='/login/auth0'">
-            PLAY NOW!
-          </button>
 
-          {% endif %}
-
+            <button class="play" {% if status == 0 %} onclick="window.location.href='/squid-game'" {% endif %}>
+              {% if status == -1 %}
+                COMING SOON
+              {% elif status == 0 %}
+                PLAY NOW !
+              {% elif status == 1 %}
+                Event Ended
+              {% endif %}
+            </button>
+          
           <div class="text-heading">
             <h3>
               <span class="hidetext"> Prakriti </span>
             </h3>
             <h4>
-              <span class="hidetext">Year 2021</span>
+              <span class="hidetext">Year 2022</span>
             </h4>
           </div>
         </div>
@@ -194,7 +194,7 @@
           <img
             class="grid__item-img"
             src="https://images.wallpapersden.com/image/download/front-man-squid-game_bWVlbmuUmZqaraWkpJRraWWtbmtl.jpg"
-            alt="Jacob Halko image"
+            alt="Front Man Image"
           />
           <!-- <img class="grid__item-img" src="image1.png" alt="image1" /> -->
         </div>
@@ -233,12 +233,26 @@
 </div>
 
 
+<div class="mobile-footer bg-white p-5">
+  <i class="fab fa-facebook" onclick="window.location.href='https://www.facebook.com/prakriti.nitdgp/'"></i>
+  <i class="fab fa-instagram" onclick="window.location.href='https://www.instagram.com/prakriti.nitdgp/?hl=en'"></i>
+  <i class="fab fa-youtube" onclick="window.location.href='https://www.youtube.com/channel/UCCJawK3GC87uhzxPdBGw_mA'"></i>
+  <i class="fas fa-globe" onclick="window.location.href='https://www.prakriti.in.net/'"></i>
+  <i class="fas fa-question-circle" onclick="showContact()"></i>
+</div>
+
 <script>
   function showProfile(){
     document.getElementById('Profile').style.display = "flex"
   }
   function hideProfile(){
     document.getElementById('Profile').style.display = "none"
+  }
+  function showContact(){
+    document.getElementById('helpcard').style.display = "flex"
+  }
+  function hideContact(){
+    document.getElementById('helpcard').style.display = "none"
   }
 </script>
 

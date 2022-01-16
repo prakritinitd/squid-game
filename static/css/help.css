@@ -1,0 +1,126 @@
+#helpcard{
+    position: absolute;
+    display: flex;
+    text-align: center;
+    display: none;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000000000000000000000;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+    backdrop-filter: blur(1px);
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    animation: helpanime 0.5s ease normal;
+}
+@keyframes helpanime{
+    0%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+#helpcard h6{
+    position: absolute;
+    width: 100%;
+    top: 1rem;
+    font-size: 3.5rem;
+    text-align: center;
+}
+#helpcard .container{
+    padding-top: 2rem;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+#helpcard .container .card{
+    position: relative;
+    overflow: hidden;
+    max-width: 300px;
+    padding: 0.5rem;
+    height: auto;
+    margin: 0 1.25rem;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.5s all ;
+}
+#helpcard .container .card:hover{
+    transform: scale(1.1);
+    transition: 0.5s all;
+}
+#helpcard .container .card img{
+    width: 100%;
+    height: 300px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: block;
+    border-radius: 8px;
+    object-fit: cover;
+}
+#helpcard .container .card p{
+    position: inherit;
+    margin-top: 0.5rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: white;
+}
+.thelegend{
+    display: none;
+}
+#helpcard .container .card p i{
+    display: block;
+    padding: 0.25rem 0;
+    font-size: 1.5rem;
+}
+#helpcard .contat{
+    z-index: 100000000000;
+    cursor: pointer !important;
+    position: absolute;
+    top: 0.75rem;
+    right: 0;
+    font-size: 4rem;
+    line-height: 0;
+    padding: 2rem 2rem;
+    display: block;
+    margin-top: 0;
+}
+@media(max-width: 800px){
+    .contat{
+    font-size: 4rem !important;
+    }
+    #helpcard h6{
+        top: 8vh;
+    }    
+    .thelegend{
+        display: block;
+    }
+    .theman{
+        display: none;
+    }
+    #helpcard{
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(3px);
+    }
+    #helpcard .container{
+        margin-top: 20vh;
+        padding-bottom: 10vh;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+    #helpcard .container .card{
+        background-color: rgba(255, 255, 255, 0.3);
+        margin: 1rem 0 !important;
+    }
+}
+.cpp{
+    cursor: pointer;
+}

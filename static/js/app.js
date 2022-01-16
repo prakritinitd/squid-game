@@ -116,8 +116,8 @@ aboutButton.addEventListener( "click", ( e ) => {
     aboutTimeline.reverse();
 } );
 
-
-var countDownDate = new Date( "Jan 15, 2022 15:37:25" ).getTime();
+const time = document.getElementById('tyme').innerText
+var countDownDate = new Date( time );
 
 // Update the count down every 1 second
 var x = setInterval( function () {
@@ -141,6 +141,7 @@ var x = setInterval( function () {
     // If the count down is finished, write some text
     if ( distance < 0 ) {
         clearInterval( x );
+        window.location.href= "/"
         document.getElementById( "demo" ).innerHTML = "EXPIRED";
     }
 }, 1000 );

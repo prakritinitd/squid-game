@@ -35,7 +35,7 @@ def home(request):
             user = request.user
             auth0user = user.social_auth.get(provider='auth0')
 
-        return render(request, "index.html", {'auth0User': auth0user,'status':status})
+        return render(request, "index.html", {'auth0User': auth0user,'status':status,'eventStart': event.start.isoformat()})
 
 @login_required
 def game(request):
