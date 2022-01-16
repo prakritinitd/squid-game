@@ -65,7 +65,7 @@
       {% if status == -1 %}
         <h2 id="demo"></h2>
       {% endif %}
-      <button class="about" style="display: flex;">
+      <button class="about" style="display: flex;" onclick="fullScreen()">
         <span class="home-button active">About</span>
         <span class="about-button">Close</span>
       </button>
@@ -149,10 +149,6 @@
           </a>
         </li>
       </ul>
-      <div class="footer">
-        <span>Built by</span>
-        <a href="https://www.prakriti.in.net/">Prakriti NIT Durgapur</a>
-      </div>
     </div>
     <main class="main-content">
       <section class="section section-home visible">
@@ -253,6 +249,16 @@
   }
   function hideContact(){
     document.getElementById('helpcard').style.display = "none"
+  }
+  const Elem = document.documentElement;
+  function fullScreen() {
+    if (Elem.requestFullscreen) {
+      Elem.requestFullscreen();
+    } else if (Elem.webkitRequestFullscreen) { /* Safari */
+      Elem.webkitRequestFullscreen();
+    } else if (Elem.msRequestFullscreen) { /* IE11 */
+      Elem.msRequestFullscreen();
+    }
   }
 </script>
 

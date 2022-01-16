@@ -9,7 +9,6 @@
 html {
   box-sizing: border-box;
 }
-
 :root {
   --color-secondary: #D72C5D;
   --color-background: #d8dbe2;
@@ -178,6 +177,7 @@ a:hover svg {
   grid-column: 2 / 3;
   display: grid;
   margin-top: -1.5rem;
+  padding-bottom: 100px;
 }
 
 .section-about {
@@ -518,6 +518,7 @@ h4 {
 .mobile-footer{
   display: none;
   position: absolute;
+  z-index: 1;
   left: 0;
   right: 0;
   bottom: 0;
@@ -529,9 +530,17 @@ h4 {
 }
 .mobile-footer i{
   font-size: 1.75rem;
+  text-shadow: 0.2rem 0.225rem #D72C5D;
   margin: 0 0.4rem;
 }
-@media(max-width:426px){
+@media(max-width:600px){
+  .media,
+  .content__figure-caption{
+    display: none;
+  }
+  .about{
+    margin-right: 8px !important;
+  }
   .mobile-footer{
     display: block;
   }

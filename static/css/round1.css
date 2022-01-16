@@ -14,6 +14,19 @@
     bottom: 1.5vw;
     left: 1.5vw;
   }
+  .timer-label {
+    font-family: Digital, monospace;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #d7213c;
+    background: #000;    
+    border: 5px outset #8b8b8b;
+    padding: 0.5rem;
+    text-align: center;
+    position: absolute;
+    bottom: 80px;
+    left: 1.5vw;
+  }
   
   .distance {
     font-family: Digital, monospace;
@@ -27,7 +40,9 @@
     top: 1.5vw;
     left: 1.5vw;
   }
-  
+  .block {
+    display: block;
+  }
   .movement {
     font-family: Digital, monospace;
     font-size: min(max(14px, 7vw), 46px);
@@ -40,7 +55,19 @@
     bottom: 1.5vw;
     right: 1.5vw;
   }
-  
+  .movement-label {
+    font-family: Digital, monospace;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #d7213c;
+    background: #000;    
+    border: 5px outset #8b8b8b;
+    padding: 0.5rem;
+    text-align: center;
+    position: absolute;
+    bottom: 80px;
+    right: 1.5vw;
+  }
   .container {
     height: 100vh;
     display: grid;
