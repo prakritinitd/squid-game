@@ -10,6 +10,7 @@ let prev_pos = {
   x: 0,
   y: 0
 };
+var Elem = document.documentElement;
 let distanceSinceWatching = 0;
 const supaModal = document.getElementById('big-modal');
 const THEURL = window.location.origin
@@ -245,7 +246,13 @@ function init () {
 
 elStart.addEventListener('click', () => {
   init();
-
+  if (Elem.requestFullscreen) {
+    Elem.requestFullscreen();
+  } else if (Elem.webkitRequestFullscreen) { /* Safari */
+    Elem.webkitRequestFullscreen();
+  } else if (Elem.msRequestFullscreen) { /* IE11 */
+    Elem.msRequestFullscreen();
+  }
   elContainer.classList.add('is-playing');
   elHowTo.classList.remove('is-visible');
 });
