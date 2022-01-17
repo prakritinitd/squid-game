@@ -163,3 +163,25 @@ def UserProfile(request):
     user = request.user
     auth0user = user.social_auth.get(provider='auth0')
     return render(request, "userprofile.html",{'auth0User':auth0user})
+
+@login_required
+def cheaterRound1(request):
+    round1 = Round1.objects.get(user=request.user)
+    round1.cheater = True
+    round1.save()
+    return JsonResponse({"message": f"Thanks {user.first_name} you are registered as a cheater now"})
+
+@login_required
+def cheaterRound2(request):
+    round2 = Round2.objects.get(user=request.user)
+    round2.cheater = True
+    round2.save()
+
+    return JsonResponse({"message": f"Thanks {user.first_name} you are registered as a cheater now"})
+
+@login_required
+def gameOver(request):
+    cuser = CustomUser.objects.get(user=request.user)
+    cuser.gameover = True
+    cuser.save()
+    return JsonResponse({"message" : f"Game Over {request.user.first_name}" })
