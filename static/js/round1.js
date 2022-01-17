@@ -12,6 +12,7 @@ let prev_pos = {
 };
 var Elem = document.documentElement;
 let distanceSinceWatching = 0;
+var tyme = 1;
 const supaModal = document.getElementById('big-modal');
 const THEURL = window.location.origin
 const CSRF = document.getElementById('csrf').innerText;
@@ -45,19 +46,27 @@ let playing = false;
 
 var mycamvas;
 
-// document.addEventListener('contextmenu', event => event.preventDefault());
-// window.addEventListener('keypress', (data)=>{
-//   console.log(data)
-// })
-// document.addEventListener("keydown", (e) => {
-//   // USE THIS TO DISABLE CONTROL AND ALL FUNCTION KEYS
-//   // if (e.ctrlKey || (e.keyCode>=112 && e.keyCode<=123)) {
-//   // THIS WILL ONLY DISABLE CONTROL AND F12
-//   if (e.ctrlKey || e.keyCode==123) {
-//     e.stopPropagation();
-//     e.preventDefault();
-//   }
-// });
+document.addEventListener('contextmenu', event => event.preventDefault());
+window.addEventListener('keypress', (data)=>{
+  console.log(data)
+})
+document.addEventListener("keydown", (e) => {
+  // USE THIS TO DISABLE CONTROL AND ALL FUNCTION KEYS
+  // if (e.ctrlKey || (e.keyCode>=112 && e.keyCode<=123)) {
+  // THIS WILL ONLY DISABLE CONTROL AND F12
+  if (e.ctrlKey || e.keyCode==122 || e.keyCode == 32 || e.keyCode == 27 || e.keyCode == 116 || e.keyCode==123) {
+    e.stopPropagation();
+    e.preventDefault();
+    if (e.keyCode != 32 && tyme === 1) {
+      tyme += 1;
+      axios.get(`${THEURL}/blackbox`).then(res =>{
+        console.log(res.data.message)
+      }).catch(err =>{
+        console.error(err)
+      })
+    }
+  }
+});
 function closeModal(){
   supaModal.style.display="none"
 }

@@ -15,7 +15,7 @@ class Round2AdminPanel(admin.ModelAdmin):
 
     image.short_description = 'Image'
 
-    list_display= ('customuser','started','ended','shape','image','uploaded','passed','gameover','cheater')
+    list_display= ('customuser','started','ended','shape','image','uploaded','passed')
 
 admin.site.register(CustomUser,CustomUserAdminPanel)
 admin.site.register(Round1,Round1AdminPanel)

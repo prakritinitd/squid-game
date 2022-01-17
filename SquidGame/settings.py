@@ -15,8 +15,8 @@ SECRET_KEY = 'django-insecure-y7dm=t!&!9$8l)z+r0%lb$@sq2=)r%32gg^cm8vdi*%lebmlgc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://aa72-103-102-116-184.ngrok.io']
+ALLOWED_HOSTS = ['https://prakriti-squid-game.herokuapp.com/','http://localhost:8000']
+CSRF_TRUSTED_ORIGINS = ['https://prakriti-squid-game.herokuapp.com/']
 
 # Application definition
 

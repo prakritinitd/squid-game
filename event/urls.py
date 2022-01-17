@@ -12,10 +12,9 @@ urlpatterns = [
     path("round1_-_-_-_", views.SuccessRound1),
     path("profile", views.UserProfile),
 
-    # API's for cheaters
+    # API's for cheaters of round1
 
     path('blackbox',views.cheaterRound1),
-    path('redbox',views.cheaterRound2),
 
     # API for gameover
 
