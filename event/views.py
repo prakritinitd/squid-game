@@ -96,7 +96,7 @@ def game(request):
         if round2 == None:
             round2 = Round2(user=user,customuser=customuser[0],shape=Shapes[randint(0, 3)])
             round2.save()
-            round2.ended = round2.started + timedelta(minutes= 1,seconds= 15)
+            round2.ended = round2.started + timedelta(minutes= 00,seconds= 15)
             round2.save()
 
         context = {

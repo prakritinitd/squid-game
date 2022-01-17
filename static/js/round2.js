@@ -1,5 +1,8 @@
-const TIME = document.getElementById('timeLeft').innerText
+const TIME   = document.getElementById('timeLeft').innerText
 const THEURL = window.location.origin
+var INPUT  = document.getElementById('input')
+var SUBMIT = document.getElementById('submit')
+
 var SENTONCE = false
 function updateTimer() {
     future = Date.parse(TIME);
@@ -19,6 +22,8 @@ function updateTimer() {
     if (d < 0){
         document.getElementById("timer")
             .innerHTML = "<h3><strong>GAME OVER !</strong></h3>"
+        document.getElementById('input').remove()
+        document.getElementById('submit').remove()
             return
     }
 
@@ -28,4 +33,4 @@ function updateTimer() {
         '<div>' + s + '<span>seconds</span></div>';
     return;
 }
-setInterval('updateTimer()', 100); // 100 ms latency, every 10ms there will be rerendering
+setInterval('updateTimer()', 1000); // 1000 ms latency, every 1000ms there will be rerendering

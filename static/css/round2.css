@@ -3,10 +3,21 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
+  position: relative;
+}
+.normal-overlay{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.15);
 }
 .round2 {
   background-color: grey;
   height: 100vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,32 +25,101 @@
 .event-card {
   padding: 1.5rem;
   width: 500px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  border-radius: 16px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+.event-card h1{
+  font-size: 3rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+}
+.event-card h4{
+  font-family: 'Courier New', Courier, monospace;
+  cursor: pointer;
+  font-weight: 600;
+}
 .event-card #timer {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   font-size: 1.25rem;
   font-weight: 600;
   margin: 1rem 0 0 0.5rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+.event-card #timer div{
+  margin: 0 1rem;
+  display: block;
 }
 .event-card img {
-  height: 300px;
+  object-fit: contain;
+  height: 200px;
   display: block;
-  margin: auto;
+  border-radius: 8px;
+  margin: 1.5rem auto;
 }
 
-.heading::after {
-  content: "";
+
+@media(max-width:600px){
+  .event-card{
+    margin: 1rem;
+  }
+}
+
+
+/* MODAL PORTION */
+
+#cont{
+  z-index: 100;
   position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
+  top: 0;
+  right: 0;
   left: 0;
-  background-color: #0087ca;
-  transform-origin: bottom right;
+  bottom: 0;
+  padding: 1rem;
+
+  background-color: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(5px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+#cont .moddal{
+  background-color: #fff;
+  border: 1px solid #999;
+  padding: 1.5rem;
+  max-width: 50vw;
+  border-radius: 8px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.15);
+}
+#cont .moddal h1{
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+#cont article{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+#cont article span{
+  color: red;
+}
+
+@media(max-width:600px){
+  #cont .moddal{
+    max-width: unset;
+    width: 100%;
+  }
+  #cont h1{
+    font-size: 2rem;
+  }
+  #cont article{
+    font-size: 1.25rem;
+  }
 }
