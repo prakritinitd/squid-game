@@ -1,2 +1,60 @@
-<h1>You have completed all the online rounds we will be contacting you soon</h1>
-<h1>be prepared fo further rounds</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#000" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRAKRITI | Squid Game</title>
+    <link rel="stylesheet" href="{% static 'css/quall.css' %}" />
+  </head>
+  <body>
+
+    {% if form == True %}
+    <!--FORM MODAL-->
+    <div class="modal-container" id="modal">
+        <form method="post">
+            {% csrf_token %}
+            <span onclick="hideModal()">&times;</span>
+            <h3> Enter Your Mobile Number </h3>
+            <input type="number" placeholder="Enter your phone number" maxlength="12" name="phone" required="true">
+            <button class="btn">Submit</button>
+        </form>
+    </div>
+    {% endif %}
+
+    <canvas id="my-canvas"></canvas>
+    <div class="card">
+      <h1>Congratulations 🎉</h1>
+      <h2>Player {{request.user.id}}</h2>
+      <h2>You have qualified all the online rounds</h2>
+       {% if form == True %}
+        <button class="btn" onclick="showModal()">Enter Your Phone Number</button>
+        {% else %}
+            <p>we will be contacting you soon</p>
+      {% endif %}
+    </div>
+  </body>
+  <script src="{% static 'js/confetti.min.js' %}"></script>
+  <script>
+    var HEIGHT = window.innerHeight;
+    var WIDTH = window.innerWidth;
+    var confettiElement = document.getElementById("my-canvas");
+    var confettiSettings = { 
+        target: confettiElement,
+        max: 250,
+        size: 1.3,
+
+    };
+    var confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
+
+    function showModal() {
+        document.getElementById('modal').style.display = "flex"
+    }
+    function hideModal() {
+        document.getElementById('modal').style.display = "none"
+    }
+  </script>
+</html>

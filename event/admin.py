@@ -3,7 +3,7 @@ from .models import Event,CustomUser,Round1,Round2
 from django.utils.html import format_html
 
 class CustomUserAdminPanel(admin.ModelAdmin):
-    list_display = ('user','score','gameover','qualifiedround1','qualifiedround2',)
+    list_display = ('user','phone','gameover','qualifiedround1','qualifiedround2',)
 
 class Round1AdminPanel(admin.ModelAdmin):
     list_display= ('customuser','started','ended','attempt','passed','gameover','cheater')

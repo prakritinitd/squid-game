@@ -59,9 +59,19 @@ def game(request):
         Shapes = ['heart.png','star.jpg','umbrella.jpg','crescent.png']
         round2 = Round2.objects.filter(user=user).first()
 
+        if round2 is not None and round2.passed == True:
+            if request.method == 'POST':
+                phone = request.POST.get('phone')
+                customuser[0].phone = phone
+                customuser[0].save()
+                return redirect('home')
+            form = False
+            if customuser[0].phone is None:
+                form = True
+            return render(request,"userwait.html",{'form':form})
+
         if round2 is not None and round2.uploaded == True:
             return render(request, 'waitAfterRound2.html')
-
 
         # Here if the user bypasses the frontend and does does not upload anything
         # Then nothing will happed

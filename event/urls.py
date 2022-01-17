@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.home),
+    path("", views.home,name="home"),
     path("squid-game", views.game, name="game"),
 
     # API's for ROUND 1

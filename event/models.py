@@ -13,10 +13,10 @@ class Event (models.Model):
 
 class CustomUser (models.Model):
     user = models.OneToOneField(User,verbose_name=("User"), on_delete=models.CASCADE,null=True)
-    score = models.SmallIntegerField(default=0)
     gameover =  models.BooleanField(default=False,verbose_name=("Game Over"),null=True)
     qualifiedround1 = models.BooleanField(default=False,verbose_name=("Qualified Round 1 ?"),null=True)
     qualifiedround2 = models.BooleanField(default=False,verbose_name=("Qualified Round 2 ?"),null=True)
+    phone = models.SmallIntegerField(null=True)
 
     def __str__(self):
         return self.user.first_name
