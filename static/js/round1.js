@@ -37,8 +37,8 @@ shotGun.volume = 0.2;
 const sigh = new Audio('https://assets.codepen.io/127738/sigh.mp3');
 
 
-const MAX_TIME = 60;
-const FINISH_DISTANCE = 100;
+const MAX_TIME = 100;
+const FINISH_DISTANCE = 60;
 const IN_GAME_MAX_DISTANCE = 4000;
 const MAX_MOVEMENT = 180;
 
@@ -88,10 +88,12 @@ function AttemptsLeft() {
 AttemptsLeft()
 function act() {
   console.log("Act CAlled")
+  supaModal.style.display = "flex";
   axios({
     method: 'GET',
     url: `${THEURL}/round1-help`,
   }).then(res =>{
+    console.log(res.data)
       if (res.data.status === true){
         message.innerText= res.data.HelpText;
         supaModal.setAttribute('onclick','closeModal()');

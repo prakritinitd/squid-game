@@ -471,6 +471,7 @@ h4 {
     font-weight: bold;
     position: absolute;
     left: 20%;
+    top: 15%;
     background: var(--color-secondary);
     padding: 10px;
 }

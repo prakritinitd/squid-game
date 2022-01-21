@@ -159,12 +159,6 @@ def SuccessRound1(request):
             return JsonResponse({"message": "Congratulations you are promoted to the next round which will begin in 30 minutes be ready!"})
 
 @login_required
-def UserProfile(request):
-    user = request.user
-    auth0user = user.social_auth.get(provider='auth0')
-    return render(request, "userprofile.html",{'auth0User':auth0user})
-
-@login_required
 def cheaterRound1(request):
     round1 = Round1.objects.get(user=request.user)
     round1.cheater = True
