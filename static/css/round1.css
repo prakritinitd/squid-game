@@ -191,10 +191,7 @@
   }
 
   @media(max-width:600px){
-    .timer,
-    .distance,
-    .movement{
-      font-size: 1rem !important;
-    }
+
+
      
   }

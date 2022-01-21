@@ -96,7 +96,7 @@ def game(request):
         if round2 == None:
             round2 = Round2(user=user,customuser=customuser[0],shape=Shapes[randint(0, 3)])
             round2.save()
-            round2.ended = round2.started + timedelta(minutes= 00,seconds= 15)
+            round2.ended = round2.started + timedelta(minutes= 10)
             round2.save()
 
         context = {
@@ -116,7 +116,7 @@ def game(request):
 @login_required
 def attemptsLeftRound1(request):
     round1 = Round1.objects.get(user=request.user)
-    return JsonResponse({"message": 3 - round1.attempt})
+    return JsonResponse({"message": 4 - round1.attempt})
 
 @login_required
 def replayRoundOne(request):
@@ -124,10 +124,10 @@ def replayRoundOne(request):
     USER = request.user
     customUser = CustomUser.objects.get(user=USER)
     round1 = Round1.objects.get(user=USER)
-    if round1.attempt <=2 and round1.gameover == False:
+    if round1.attempt <=3 and round1.gameover == False:
         round1.attempt += 1 
         round1.save()
-    if round1.attempt == 3: # Therefore total no of attempts are 2 only
+    if round1.attempt == 4: # Therefore total no of attempts are 3 only
         if round1.ended is None :
             round1.ended = timezone.now()
             round1.gameover = True
@@ -135,7 +135,7 @@ def replayRoundOne(request):
             customUser.save()
             round1.save()
         return JsonResponse({"status": False,"HelpText": "Your no. of attempts are over, thus Jayeon's Squid Game is over for you"})
-    return JsonResponse({"status": True,"HelpText": "Try moving your head sideways to achieve greater speed, This is your last attempt play wisely"})
+    return JsonResponse({"status": True,"HelpText": "Try moving your head sideways to achieve greater speed, play wisely"})
 
 @login_required
 def SuccessRound1(request):
@@ -156,7 +156,7 @@ def SuccessRound1(request):
             round1.ended = timezone.now()
             round1.save()
             customUser.save()
-            return JsonResponse({"message": "Congratulations you are promoted to the next round which will begin in 30 minutes be ready!"})
+            return JsonResponse({"message": "Congratulations you are promoted to the next round !"})
 
 @login_required
 def cheaterRound1(request):

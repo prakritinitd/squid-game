@@ -7,6 +7,8 @@ class Event (models.Model):
     name = models.CharField(verbose_name="Event Name",max_length=100)
     start = models.DateTimeField(verbose_name=("Event Starting Time"),)
     end = models.DateTimeField(verbose_name=("Event Starting Time"),)
+    round1 = models.BooleanField(verbose_name=("Round1 started ?"),default=False)
+    round2 = models.BooleanField(verbose_name=("Round2 started ?"),default=False)
 
     def __str__(self):
         return self.name

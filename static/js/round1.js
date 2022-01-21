@@ -37,8 +37,8 @@ shotGun.volume = 0.2;
 const sigh = new Audio('https://assets.codepen.io/127738/sigh.mp3');
 
 
-const MAX_TIME = 100;
-const FINISH_DISTANCE = 60;
+const MAX_TIME = 120;
+const FINISH_DISTANCE = 65;
 const IN_GAME_MAX_DISTANCE = 4000;
 const MAX_MOVEMENT = 180;
 
