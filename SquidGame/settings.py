@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-y7dm=t!&!9$8l)z+r0%lb$@sq2=)r%32gg^cm8vdi*%lebmlgc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['15.207.201.63','ec2-15-207-201-63.ap-south-1.compute.amazonaws.com','http://localhost:8000','squidgame.prakriti.in.net']
+ALLOWED_HOSTS = ['15.207.201.63','ec2-15-207-201-63.ap-south-1.compute.amazonaws.com','localhost','squidgame.prakriti.in.net']
 CSRF_TRUSTED_ORIGINS = ['https://prakriti-squid-game.herokuapp.com/']
 
 # Application definition

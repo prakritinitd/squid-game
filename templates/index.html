@@ -47,6 +47,23 @@
   </div>
 </div>
 
+<!-- Funstox -->
+<link rel="stylesheet" href="{% static 'css/funstox.css' %}" />
+<div class="funstox" onclick="showFun()">
+  Powered by FUNSTOX
+</div>
+<div id="fun">
+  <div id="cutty" onclick="hideFun()">&times;</div>
+  <div class="fcard">
+    <img src="https://funstox.live/images/logo.svg" alt="Funstox Logo">
+    <p class="daone">India's finest fantasy gaming platform for all Crypto-nians</p>
+    <p class="datwo">Play Together. Earn Together.</p>
+    <div class="btn-container">
+      <a href="https://funstox.live/">Visit Website</a>
+      <a href="https://tinyurl.com/2d7vbuxn">Download App</a>
+    </div>
+  </div>
+</div>
 <div id="landingpage">
   {% if status == -1 %}
     <div style="display:none;" id="tyme">{{eventStart}}</div>
@@ -249,6 +266,12 @@
   }
   function hideContact(){
     document.getElementById('helpcard').style.display = "none"
+  }
+  function showFun(){
+    document.getElementById('fun').style.display = "flex"
+  }
+  function hideFun(){
+    document.getElementById('fun').style.display = "none"
   }
   const Elem = document.documentElement;
   function fullScreen() {

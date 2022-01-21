@@ -1,0 +1,163 @@
+.funstox{
+    position: absolute;
+    top: 3rem;
+    left: 20vw;
+
+    font-size: 1.5rem;
+    text-shadow: 2px 3px #D72C5D;
+
+    cursor: pointer;
+    animation-name: heed;
+    animation-duration: 2s;
+    animation-delay: 0.75s;
+    animation-timing-function: ease;
+}
+@keyframes heed{
+    0%{
+        opacity: 0.25;
+        top: -100px;
+    }
+    100%{
+        opacity: 1.0;
+        top: 3rem;
+    }
+}
+#fun{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+
+    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.5);
+}
+#fun .fcard{
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+#fun .fcard img{
+    width: 400px;
+    margin: 1.25rem;
+}
+#fun .fcard p{
+    margin: 2rem 0;
+    font-size: 3rem;
+    text-align: center;
+}
+#fun .fcard .daone{
+    animation: bottomsup 0.5s linear;
+}
+#fun .fcard .datwo{
+    animation: bottomsup 0.75s linear;
+}
+#fun .fcard .btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#fun .fcard .btn-container a{
+    margin: 1rem 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    background: #66f;
+    border-radius: 4px;
+    animation: bottomsupx 1s linear;
+}
+
+#cutty{
+    z-index: 100000;
+    color: #fff;
+    font-size: 5rem;
+    position: absolute;
+    line-height: 1;
+    padding: 1rem;
+    cursor: pointer;
+    right: 0;
+    top: 0;
+    text-shadow: 0.25rem 0.25rem #d72c5d;
+}
+@keyframes bottomsup{
+    0%{
+        opacity: 0.5;
+        position: relative;
+        bottom: -150px;
+    }
+    100%{
+        opacity: 1.0;
+        position: relative;
+        bottom: 0;
+    }
+}
+
+@keyframes bottomsupx{
+    0%{
+        opacity: 0.5;
+        position: relative;
+        bottom: -200px;
+    }
+    100%{
+        opacity: 1.0;
+        position: relative;
+        bottom: 0;
+    }
+}
+
+@media(max-width:800px){
+    .funstox{
+        top: unset;
+        z-index: 10;
+        bottom: 100px;
+        animation: none !important;
+    }
+    #cutty{
+        top: 0;
+        right: 0;
+        line-height: 0.75;
+        padding: 0.35rem;
+    }
+    #fun .fcard{
+        width: unset;
+        padding: 1rem;
+        width: 100%;
+    }
+    #fun .fcard img{
+        margin: 2rem 0 1.5rem 0 !important;
+        height: unset;
+        width: 100%;
+    }    
+    #fun .fcard p{
+        font-size: 1.75rem;
+    }
+    #fun .fcard .daone{
+        animation: bottomsup 0.5s linear;
+    }
+    #fun .fcard .datwo{
+        animation: bottomsup 0.75s linear;
+    }
+    #fun .fcard .btn-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    #fun .fcard .btn-container a{
+        animation: bottomsupx 0.75s linear;
+        margin: 0 0.5rem;
+        width: 100% !important;
+        font-size: 1rem;
+        margin: 1rem;
+        padding: 0;
+        padding: 1.2rem;
+        display: block;
+        text-align: center;
+    }
+}
