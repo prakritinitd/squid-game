@@ -1,4 +1,3 @@
-import django_heroku
 import os
 from pathlib import Path
 
@@ -15,7 +14,7 @@ SECRET_KEY = 'django-insecure-y7dm=t!&!9$8l)z+r0%lb$@sq2=)r%32gg^cm8vdi*%lebmlgc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://prakriti-squid-game.herokuapp.com/','http://localhost:8000']
+ALLOWED_HOSTS = ['15.207.201.63','ec2-15-207-201-63.ap-south-1.compute.amazonaws.com','http://localhost:8000','squidgame.prakriti.in.net']
 CSRF_TRUSTED_ORIGINS = ['https://prakriti-squid-game.herokuapp.com/']
 
 # Application definition
@@ -141,5 +140,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'static/siteimages')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-django_heroku.settings(locals())

@@ -16,7 +16,7 @@ class CustomUser (models.Model):
     gameover =  models.BooleanField(default=False,verbose_name=("Game Over"),null=True)
     qualifiedround1 = models.BooleanField(default=False,verbose_name=("Qualified Round 1 ?"),null=True)
     qualifiedround2 = models.BooleanField(default=False,verbose_name=("Qualified Round 2 ?"),null=True)
-    phone = models.SmallIntegerField(null=True,blank=True)
+    phone = models.CharField(null=True,blank=True,max_length=12)
 
     def __str__(self):
         return self.user.first_name
