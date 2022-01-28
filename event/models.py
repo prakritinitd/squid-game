@@ -51,7 +51,7 @@ class Round2 (models.Model):
     passed = models.BooleanField(default=False,null=True)
 
     shape = models.CharField(verbose_name="Shape Assigned",max_length=50,null=True)
-    image = models.ImageField(verbose_name="Uploaded Image",upload_to="uploads/",null=True,blank=True)
+    image = models.ImageField(verbose_name="Uploaded Image",null=True,blank=True)
 
     def __str__(self):
         return self.user.first_name
